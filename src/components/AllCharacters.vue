@@ -1,12 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-
-interface Character {
-  name: string
-  style: string
-  likeCount: number
-  id: number
-}
+import BenderStatistics from './BenderStatistics.vue'
+import type { Character } from '@/types/Character'
 
 export default defineComponent({
   data: function () {
@@ -35,21 +30,14 @@ export default defineComponent({
       favoriteCharacters: [] as Character[]
     }
   },
-  computed: {
-    benderNumber() {
-      return {
-        waterBenders: this.characterList.filter((char) => char.style === 'waterbender').length,
-        fireBenders: this.characterList.filter((char) => char.style === 'firebender').length,
-        earthBenders: this.characterList.filter((char) => char.style === 'earthbender').length
-      }
-    }
-  },
 
   methods: {
     addToFavorites(character: Character) {
       this.favoriteCharacters.push(character)
     }
-  }
+  },
+
+  components: { BenderStatistics }
 })
 </script>
 <template>
@@ -61,18 +49,7 @@ export default defineComponent({
       </li>
     </ul>
   </div>
-  <div class="benders">
-    <h2>Amount of each bender:</h2>
-    <p>
-      Waterbenders: <span>{{ benderNumber.waterBenders }}</span>
-    </p>
-    <p>
-      Firebenders: <span>{{ benderNumber.fireBenders }}</span>
-    </p>
-    <p>
-      earthBenders: <span>{{ benderNumber.earthBenders }}</span>
-    </p>
-  </div>
+  <BenderStatistics :characters="characterList" />
   <div class="favoriteChars">
     <h2>Favorite benders</h2>
     <ul v-if="favoriteCharacters.length > 0">
