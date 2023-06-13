@@ -31,7 +31,8 @@ export default defineComponent({
           style: 'earthbender',
           likeCount: 0
         }
-      ]
+      ],
+      favoriteCharacters: [] as Character[]
     }
   },
   computed: {
@@ -42,6 +43,10 @@ export default defineComponent({
         earthBenders: this.characterList.filter((char) => char.style === 'earthbender').length
       }
     }
+  },
+
+  methods: {
+    addToFavorites() {}
   }
 })
 </script>
@@ -49,7 +54,8 @@ export default defineComponent({
   <div class="characters">
     <ul class="characters__list">
       <li class="characters__list-item" v-for="(character, index) in characterList" :key="index">
-        {{ character.name }}
+        <h3>{{ character.name }}</h3>
+        <button>Add to favorites</button>
       </li>
     </ul>
   </div>
@@ -64,5 +70,14 @@ export default defineComponent({
     <p>
       earthBenders: <span>{{ benderNumber.earthBenders }}</span>
     </p>
+  </div>
+  <div class="favoriteChars">
+    <h2>Favorite benders</h2>
+    <ul v-if="favoriteCharacters.length > 0">
+      <li v-for="(favChar, index) in favoriteCharacters" :key="index">
+        <h3>{{ favChar.name }}</h3>
+      </li>
+    </ul>
+    <p v-else>No favorite benders</p>
   </div>
 </template>
