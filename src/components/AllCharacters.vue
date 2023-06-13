@@ -46,7 +46,9 @@ export default defineComponent({
   },
 
   methods: {
-    addToFavorites() {}
+    addToFavorites(character: Character) {
+      this.favoriteCharacters.push(character)
+    }
   }
 })
 </script>
@@ -55,7 +57,7 @@ export default defineComponent({
     <ul class="characters__list">
       <li class="characters__list-item" v-for="(character, index) in characterList" :key="index">
         <h3>{{ character.name }}</h3>
-        <button>Add to favorites</button>
+        <button @click="addToFavorites(character)">Add to favorites</button>
       </li>
     </ul>
   </div>
