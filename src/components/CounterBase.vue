@@ -1,19 +1,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-export default {
-  data: () =>
-    defineComponent({
+export default defineComponent({
+  data: function () {
+    return {
       counter: 10,
       incrementAmount: 1
-    }),
+    }
+  },
 
   methods: {
     incrementCounter() {
       return (this.counter += this.incrementAmount)
     }
   }
-}
+})
 </script>
 
 <template>
