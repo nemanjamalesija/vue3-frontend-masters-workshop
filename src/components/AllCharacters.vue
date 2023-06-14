@@ -8,26 +8,28 @@ import AddCharacterForm from './AddCharacterForm.vue'
 import CharrsLayout from './CharrsLayout.vue'
 import { ref } from 'vue'
 
+const bendersInitialData = [
+  { id: JSON.stringify(crypto.randomUUID()), name: 'Aang', style: 'waterbender' },
+  {
+    id: JSON.stringify(crypto.randomUUID()),
+    name: 'Zuko',
+    style: 'firebender'
+  },
+  {
+    id: JSON.stringify(crypto.randomUUID()),
+    name: 'Toph',
+    style: 'firebender'
+  },
+  {
+    id: JSON.stringify(crypto.randomUUID()),
+    name: 'Katara',
+    style: 'earthbender'
+  }
+]
+
 export default defineComponent({
   setup() {
-    const characterList = ref<Character[]>([
-      { id: JSON.stringify(crypto.randomUUID()), name: 'Aang', style: 'waterbender' },
-      {
-        id: JSON.stringify(crypto.randomUUID()),
-        name: 'Zuko',
-        style: 'firebender'
-      },
-      {
-        id: JSON.stringify(crypto.randomUUID()),
-        name: 'Toph',
-        style: 'firebender'
-      },
-      {
-        id: JSON.stringify(crypto.randomUUID()),
-        name: 'Katara',
-        style: 'earthbender'
-      }
-    ])
+    const characterList = ref<Character[]>(bendersInitialData)
 
     const newCharacter = ref<Character>({
       id: JSON.stringify(crypto.randomUUID()),
@@ -47,8 +49,6 @@ export default defineComponent({
 
     return { characterList, newCharacter, favoriteCharacters, addToFavorites, addNewCharacter }
   },
-
-  methods: {},
 
   components: {
     BenderStatistics,

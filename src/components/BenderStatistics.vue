@@ -1,23 +1,20 @@
-<script lang="ts">
-import type { PropType } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import type { Character } from '../types/Character'
+import { defineProps } from 'vue'
 
-export default {
-  props: {
-    characters: {
-      type: Array as PropType<Character[]>,
-      required: true
-    }
-  },
-  computed: {
-    benderNumber() {
-      return {
-        waterBenders: this.characters.filter((char) => char.style === 'waterbender').length,
-        fireBenders: this.characters.filter((char) => char.style === 'firebender').length,
-        earthBenders: this.characters.filter((char) => char.style === 'earthbender').length
-      }
-    }
-  }
+const props = defineProps<{ characters: Character[] }>()
+
+const benderNumber = {
+  waterBenders: computed(
+    () => props.characters.filter((char) => char.style === 'waterbender').length
+  ),
+  fireBenders: computed(
+    () => props.characters.filter((char) => char.style === 'firebender').length
+  ),
+  earthBenders: computed(
+    () => props.characters.filter((char) => char.style === 'earthbender').length
+  )
 }
 </script>
 <template>
