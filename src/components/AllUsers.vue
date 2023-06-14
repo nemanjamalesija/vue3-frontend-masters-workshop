@@ -5,7 +5,7 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const users = ref([])
+    const users = ref([] as User[])
 
     async function fetchUsers() {
       try {
