@@ -10,6 +10,10 @@
 .main {
   border: 2px solid blue;
   margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  justify-items: start;
 }
 
 .aside {
