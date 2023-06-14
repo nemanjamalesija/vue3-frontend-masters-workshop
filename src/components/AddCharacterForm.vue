@@ -45,10 +45,7 @@ export default {
     </label>
     <button
       type="submit"
-      @click.prevent="
-        $emit('add-new-character', newCharacter)
-        resetNewCharacter()
-      "
+      @click.prevent="$emit('add-new-character', newCharacter), resetNewCharacter()"
     >
       Add new character
     </button>

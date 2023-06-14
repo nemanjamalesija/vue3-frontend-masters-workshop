@@ -5,6 +5,7 @@ import type { Character } from '@/types/Character'
 import FavoriteCharacters from './FavoriteCharacters.vue'
 import SingleCharacter from './SingleCharacter.vue'
 import AddCharacterForm from './AddCharacterForm.vue'
+import CharrsLayout from './CharrsLayout.vue'
 
 export default defineComponent({
   data: function () {
@@ -51,16 +52,35 @@ export default defineComponent({
     }
   },
 
-  components: { BenderStatistics, FavoriteCharacters, SingleCharacter, AddCharacterForm }
+  components: {
+    BenderStatistics,
+    FavoriteCharacters,
+    SingleCharacter,
+    AddCharacterForm,
+    CharrsLayout
+  }
 })
 </script>
 <template>
-  <div class="characters">
-    <ul class="characters__list">
-      <SingleCharacter :characters="characterList" @add-to-favorites="addToFavorites" />
-    </ul>
-  </div>
-  <BenderStatistics :characters="characterList" />
-  <FavoriteCharacters :favoriteCharacters="favoriteCharacters" />
-  <AddCharacterForm :characters="characterList" @add-new-character="addNewCharacter" />
+  <!-- SIDEBAR -->
+  <CharrsLayout>
+    <template v-slot:aside>
+      <BenderStatistics :characters="characterList" />
+      <FavoriteCharacters :favoriteCharacters="favoriteCharacters" />
+    </template>
+    <!-- MAIN -->
+    <template v-slot:main>
+      <div class="characters">
+        <ul class="characters__list">
+          <SingleCharacter :characters="characterList" @add-to-favorites="addToFavorites" />
+        </ul>
+      </div>
+      <AddCharacterForm :characters="characterList" @add-new-character="addNewCharacter" />
+    </template>
+    <!-- FOOTER -->
+
+    <template v-slot:footer>
+      <p>Copyright Nemanja Malesija</p>
+    </template>
+  </CharrsLayout>
 </template>

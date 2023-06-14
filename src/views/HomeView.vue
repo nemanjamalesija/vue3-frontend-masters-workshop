@@ -3,7 +3,5 @@ import type AppVue from '@/App.vue'
 </script>
 
 <template>
-  <main>
-    <AppVue />
-  </main>
+  <AppVue />
 </template>
