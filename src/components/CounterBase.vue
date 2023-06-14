@@ -1,18 +1,16 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  data: function () {
-    return {
-      counter: 10,
-      incrementAmount: 1
-    }
-  },
+  setup() {
+    let counter = ref<number>(0)
+    const incrementAmount = 1
 
-  methods: {
-    incrementCounter() {
-      return (this.counter += this.incrementAmount)
+    function incrementCounter() {
+      return (counter.value = +incrementAmount)
     }
+
+    return { counter, incrementCounter }
   }
 })
 </script>
