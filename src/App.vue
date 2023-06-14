@@ -30,8 +30,4 @@ export default defineComponent({
   <component :is="currentComponent" />
 </template>
 
-<style scoped>
-template {
-  background-color: #f3f3f3;
-}
-</style>
+<style scoped></style>

@@ -1,29 +1,24 @@
 <script lang="ts">
 import type { User } from '@/types/User'
 import SingleUser from './SingleUser.vue'
+import { ref } from 'vue'
 
 export default {
-  data: function () {
-    return {
-      users: [] as User[]
-    }
-  },
+  setup() {
+    const users = ref([])
 
-  methods: {
-    async fetchUsers() {
+    async function fetchUsers() {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const json = await response.json()
-        console.log(json)
-        this.users = json
+        users.value = await response.json()
       } catch (error) {
         console.error('Error fetching users:', error)
       }
     }
-  },
 
-  created() {
-    this.fetchUsers()
+    fetchUsers()
+
+    return { users }
   },
 
   components: { SingleUser }
@@ -33,9 +28,7 @@ export default {
 <template>
   <h1>Users</h1>
   <ul v-if="users" class="users">
-    <li v-for="(user, index) in users" :key="index">
-      <SingleUser :user="user" />
-    </li>
+    <SingleUser v-for="(user, index) in users" :key="index" :user="user" />
   </ul>
   <p v-else>Loading...</p>
 </template>

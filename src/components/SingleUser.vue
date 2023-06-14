@@ -27,11 +27,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="user">
-    <h2>{{ name }}</h2>
-    <p class="email">{{ email }}</p>
-    <p class="catchPhrase">{{ catchPhrase }}</p>
-  </div>
+  <li>
+    <div class="user">
+      <h2>{{ name }}</h2>
+      <p class="email">{{ email }}</p>
+      <p class="catchPhrase">{{ catchPhrase }}</p>
+    </div>
+  </li>
 </template>
 
 <style>
