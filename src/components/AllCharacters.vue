@@ -1,5 +1,4 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import BenderStatistics from './BenderStatistics.vue'
 import type { Character } from '@/types/Character'
 import FavoriteCharacters from './FavoriteCharacters.vue'
@@ -27,37 +26,17 @@ const bendersInitialData = [
   }
 ]
 
-export default defineComponent({
-  setup() {
-    const characterList = ref<Character[]>(bendersInitialData)
+const characterList = ref<Character[]>(bendersInitialData)
 
-    const newCharacter = ref<Character>({
-      id: JSON.stringify(crypto.randomUUID()),
-      name: '',
-      style: ''
-    })
+const favoriteCharacters = ref([] as Character[])
 
-    const favoriteCharacters = ref([] as Character[])
+function addToFavorites(character: Character) {
+  favoriteCharacters.value.push(character)
+}
 
-    function addToFavorites(character: Character) {
-      favoriteCharacters.value.push(character)
-    }
-
-    function addNewCharacter(character: Character) {
-      characterList.value.push(character)
-    }
-
-    return { characterList, newCharacter, favoriteCharacters, addToFavorites, addNewCharacter }
-  },
-
-  components: {
-    BenderStatistics,
-    FavoriteCharacters,
-    SingleCharacter,
-    AddCharacterForm,
-    CharrsLayout
-  }
-})
+function addNewCharacter(character: Character) {
+  characterList.value.push(character)
+}
 </script>
 <template>
   <!-- SIDEBAR -->

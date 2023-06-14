@@ -1,9 +1,7 @@
-<script lang="ts">
-export default {
-  data: function () {
-    return {}
-  }
-}
+<script setup lang="ts">
+import { defineEmits } from 'vue'
+
+const emits = defineEmits(['toggle-page-users', 'toggle-page-login'])
 </script>
 <template>
   <nav>

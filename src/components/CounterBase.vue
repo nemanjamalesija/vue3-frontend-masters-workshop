@@ -1,18 +1,14 @@
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 
-export default defineComponent({
-  setup() {
-    let counter = ref<number>(0)
-    const incrementAmount = 1
+let counter = ref<number>(0)
+const incrementAmount = 1
 
-    function incrementCounter() {
-      return (counter.value = +incrementAmount)
-    }
+function incrementCounter() {
+  return (counter.value = +incrementAmount)
+}
 
-    return { counter, incrementCounter }
-  }
-})
+return { counter, incrementCounter }
 </script>
 
 <template>

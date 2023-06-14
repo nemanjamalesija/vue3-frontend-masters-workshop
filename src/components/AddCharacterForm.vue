@@ -1,36 +1,23 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Character } from '@/types/Character'
-import type { PropType } from 'vue'
+import { ref, defineEmits } from 'vue'
 
-export default {
-  props: {
-    characters: {
-      type: Array as PropType<Character[]>,
-      required: true
-    }
-  },
+// const props = defineProps<{ characters: Character[] }>()
 
-  emits: ['add-new-character'],
+const newCharacter = ref<Character>({
+  id: crypto.randomUUID(),
+  name: '',
+  style: ''
+})
 
-  data: function () {
-    return {
-      newCharacter: {
-        id: crypto.randomUUID(),
-        name: '',
-        style: ''
-      }
-    }
-  },
-
-  methods: {
-    resetNewCharacter() {
-      this.newCharacter = {
-        id: crypto.randomUUID(),
-        name: '',
-        style: ''
-      }
-    }
+function resetNewCharacter() {
+  newCharacter.value = {
+    id: crypto.randomUUID(),
+    name: '',
+    style: ''
   }
+
+  const emits = defineEmits(['add-new-character'])
 }
 </script>
 <template>

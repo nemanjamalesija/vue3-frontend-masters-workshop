@@ -1,24 +1,18 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-  data: function () {
-    return {
-      name: '',
-      password: ''
-    }
-  }
-})
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const user = ref({ name: '', password: '' })
 </script>
 
 <template>
   <form class="login__form">
     <div class="login__form--control">
       <label> Name </label>
-      <input type="text" name="name" v-model="name" />
+      <input type="text" name="name" v-model="user.name" />
     </div>
     <div class="login__form--control">
       <label> Style </label>
-      <input type="password" name="password" v-model="password" />
+      <input type="password" name="password" v-model="user.password" />
     </div>
     <button>Login</button>
   </form>

@@ -1,22 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { Character } from '../types/Character'
 import { defineProps } from 'vue'
+import type { Character } from '../types/Character'
 
 const props = defineProps<{ characters: Character[] }>()
 
 const benderNumber = {
-  waterBenders: computed(
-    () => props.characters.filter((char) => char.style === 'waterbender').length
-  ),
-  fireBenders: computed(
-    () => props.characters.filter((char) => char.style === 'firebender').length
-  ),
-  earthBenders: computed(
-    () => props.characters.filter((char) => char.style === 'earthbender').length
-  )
+  waterBenders: props.characters.filter((char) => char.style === 'waterbender').length,
+  fireBenders: props.characters.filter((char) => char.style === 'firebender').length,
+  earthBenders: props.characters.filter((char) => char.style === 'earthbender').length
 }
 </script>
+
 <template>
   <div class="benders">
     <h2>Amount of each bender:</h2>

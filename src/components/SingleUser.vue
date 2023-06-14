@@ -1,37 +1,15 @@
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
+<script setup lang="ts">
 import type { User } from '../types/User'
-import type { PropType } from 'vue'
 
-export default defineComponent({
-  props: {
-    user: {
-      type: Object as PropType<User>,
-      required: true
-    }
-  },
-  setup(props) {
-    const {
-      name,
-      email,
-      company: { catchPhrase }
-    } = computed(() => props.user).value
-
-    return {
-      name,
-      email,
-      catchPhrase
-    }
-  }
-})
+const props = defineProps<{ user: User }>()
 </script>
 
 <template>
   <li>
     <div class="user">
-      <h2>{{ name }}</h2>
-      <p class="email">{{ email }}</p>
-      <p class="catchPhrase">{{ catchPhrase }}</p>
+      <h2>{{ props.user.name }}</h2>
+      <p class="email">{{ props.user.email }}</p>
+      <p class="catchPhrase">{{ props.user.company.catchPhrase }}</p>
     </div>
   </li>
 </template>
