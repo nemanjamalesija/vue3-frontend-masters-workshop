@@ -1,33 +1,21 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import AllUsers from './components/AllUsers.vue'
-import LoginForm from './components/LoginForm.vue'
-import UserNavigation from './components/UsersNavigation.vue'
+<script setup lang="ts">
+import AllCharacters from './components/AllCharacters.vue'
 
-export default defineComponent({
-  data: function () {
-    return {
-      currentComponent: 'LoginForm'
-    }
-  },
+// const currentComponent = ref<string>('LoginForm')
 
-  methods: {
-    togglePageUsers() {
-      this.currentComponent = 'AllUsers'
-    },
+// function togglePageUsers() {
+//   currentComponent.value = 'AllUsers'
+// }
 
-    togglePageLogin() {
-      this.currentComponent = 'LoginForm'
-    }
-  },
-
-  components: { AllUsers, LoginForm, UserNavigation }
-})
+// function togglePageLogin() {
+//   currentComponent.value = 'LoginForm'
+// }
 </script>
 
 <template>
-  <UserNavigation @toggle-page-users="togglePageUsers" @toggle-page-login="togglePageLogin" />
-  <component :is="currentComponent" />
+  <!-- <UserNavigation @toggle-page-users="togglePageUsers" @toggle-page-login="togglePageLogin" />
+  <component :is="currentComponent" /> -->
+  <AllCharacters />
 </template>
 
 <style scoped></style>

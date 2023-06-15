@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import type { Character } from '../types/Character'
+import { characterList } from '../composables/useUSersStore'
+import { computed } from 'vue'
 
-const props = defineProps<{ characters: Character[] }>()
+// const props = defineProps<{ characters: Character[] }>()
+
+// const benderNumber = {
+//   waterBenders: props.characters.filter((char) => char.style === 'waterbender').length,
+//   fireBenders: props.characters.filter((char) => char.style === 'firebender').length,
+//   earthBenders: props.characters.filter((char) => char.style === 'earthbender').length
+// }
 
 const benderNumber = {
-  waterBenders: props.characters.filter((char) => char.style === 'waterbender').length,
-  fireBenders: props.characters.filter((char) => char.style === 'firebender').length,
-  earthBenders: props.characters.filter((char) => char.style === 'earthbender').length
+  waterBenders: computed(
+    () => characterList.value.filter((char) => char.style === 'waterbender').length
+  ),
+  fireBenders: computed(
+    () => characterList.value.filter((char) => char.style === 'firebender').length
+  ),
+  earthBenders: computed(
+    () => characterList.value.filter((char) => char.style === 'earthbender').length
+  )
 }
 </script>
 

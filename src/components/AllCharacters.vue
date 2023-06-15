@@ -6,27 +6,7 @@ import SingleCharacter from './SingleCharacter.vue'
 import AddCharacterForm from './AddCharacterForm.vue'
 import CharrsLayout from './CharrsLayout.vue'
 import { ref } from 'vue'
-
-const bendersInitialData = [
-  { id: JSON.stringify(crypto.randomUUID()), name: 'Aang', style: 'waterbender' },
-  {
-    id: JSON.stringify(crypto.randomUUID()),
-    name: 'Zuko',
-    style: 'firebender'
-  },
-  {
-    id: JSON.stringify(crypto.randomUUID()),
-    name: 'Toph',
-    style: 'firebender'
-  },
-  {
-    id: JSON.stringify(crypto.randomUUID()),
-    name: 'Katara',
-    style: 'earthbender'
-  }
-]
-
-const characterList = ref<Character[]>(bendersInitialData)
+import { characterList } from '../composables/useUSersStore'
 
 const favoriteCharacters = ref([] as Character[])
 
@@ -42,17 +22,17 @@ function addNewCharacter(character: Character) {
   <!-- SIDEBAR -->
   <CharrsLayout>
     <template v-slot:aside>
-      <BenderStatistics :characters="characterList" />
+      <BenderStatistics />
       <FavoriteCharacters :favoriteCharacters="favoriteCharacters" />
     </template>
     <!-- MAIN -->
     <template v-slot:main>
       <div class="characters">
         <ul class="characters__list">
-          <SingleCharacter :characters="characterList" @add-to-favorites="addToFavorites" />
+          <SingleCharacter @add-to-favorites="addToFavorites" />
         </ul>
       </div>
-      <AddCharacterForm :characters="characterList" @add-new-character="addNewCharacter" />
+      <AddCharacterForm @add-new-character="addNewCharacter" />
     </template>
     <!-- FOOTER -->
 

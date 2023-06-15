@@ -16,9 +16,9 @@ function resetNewCharacter() {
     name: '',
     style: ''
   }
-
-  const emits = defineEmits(['add-new-character'])
 }
+
+const emits = defineEmits(['add-new-character'])
 </script>
 <template>
   <form>
