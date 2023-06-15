@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { defineEmits } from 'vue'
+;['toggle-page-users', 'toggle-page-login']
 
-const emits = defineEmits(['toggle-page-users', 'toggle-page-login'])
+const emits = defineEmits<{
+  (e: 'toggle-page-users'): void
+  (e: 'toggle-page-login'): void
+}>()
 </script>
 <template>
   <nav>
     <ul class="nav__list">
-      <li @click="$emit('toggle-page-users')">Users</li>
-      <li @click="$emit('toggle-page-login')">LoginForm</li>
+      <li @click="emits('toggle-page-users')">Users</li>
+      <li @click="emits('toggle-page-login')">LoginForm</li>
     </ul>
   </nav>
 </template>

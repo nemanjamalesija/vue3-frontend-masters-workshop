@@ -1,5 +1,7 @@
 <template>
-  <main class="main"><slot name="main" /></main>
+  <main class="main">
+    <slot name="main" />
+  </main>
 
   <aside class="aside"><slot name="aside" /></aside>
 

@@ -2,7 +2,11 @@
 import type { Character } from '../types/Character'
 import { defineProps } from 'vue'
 
-const props = defineProps<{ favoriteCharacters: Character[] }>()
+type favCharType = {
+  favoriteCharacters: Character[]
+}
+
+const props = defineProps<favCharType>()
 </script>
 
 <template>
