@@ -21,11 +21,17 @@ const characterListStore: Character[] = [
   }
 ]
 
-export const useCounterStore = defineStore('characterStore', () => {
+export const useCharactersStore = defineStore('characterStore', () => {
   const charactersState = ref(characterListStore)
+
+  const favoriteCharacters = ref([] as Character[])
 
   function addNewCharacter(character: Character) {
     charactersState.value.push(character)
+  }
+
+  function addToFavorites(character: Character) {
+    favoriteCharacters.value.push(character)
   }
 
   const benderNumber = {
@@ -40,5 +46,5 @@ export const useCounterStore = defineStore('characterStore', () => {
     )
   }
 
-  return { charactersState, addNewCharacter, benderNumber }
+  return { charactersState, addNewCharacter, benderNumber, favoriteCharacters, addToFavorites }
 })

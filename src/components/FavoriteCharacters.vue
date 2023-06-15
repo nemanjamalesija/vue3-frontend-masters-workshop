@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import type { Character } from '../types/Character'
-import { defineProps } from 'vue'
+// import type { Character } from '../types/Character'
+// import { defineProps } from 'vue'
 
-type favCharType = {
-  favoriteCharacters: Character[]
-}
+import { useCharactersStore } from '../stores/charactersStore'
 
-const props = defineProps<favCharType>()
+const charatersStore = useCharactersStore()
+
+// type favCharType = {
+//   favoriteCharacters: Character[]
+// }
+
+// const props = defineProps<favCharType>()
 </script>
 
 <template>
   <div class="favoriteChars">
     <h2>Favorite benders</h2>
-    <ul v-if="props.favoriteCharacters.length > 0">
-      <li v-for="(favChar, index) in props.favoriteCharacters" :key="index">
+    <ul v-if="charatersStore.favoriteCharacters.length > 0">
+      <li v-for="(favChar, index) in charatersStore.favoriteCharacters" :key="index">
         <h3>{{ favChar.name }}</h3>
       </li>
     </ul>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { characterList } from '../composables/useUSersStore'
-import { computed } from 'vue'
-import { useCounterStore } from '../stores/charactersStore'
+// import { characterList } from '../composables/useUSersStore'
+// import { computed } from 'vue'
+import { useCharactersStore } from '../stores/charactersStore'
 
 // const props = defineProps<{ characters: Character[] }>()
 
@@ -23,7 +23,7 @@ import { useCounterStore } from '../stores/charactersStore'
 //   )
 // }
 
-const charatersStore = useCounterStore()
+const charatersStore = useCharactersStore()
 </script>
 
 <template>
